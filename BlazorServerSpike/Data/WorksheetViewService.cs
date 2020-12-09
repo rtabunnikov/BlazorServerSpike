@@ -30,7 +30,9 @@ namespace BlazorServerSpike.Data {
                 row.Cells.Add(CellView.MakeText($"Sample { i + 1}")); // A
                 row.Cells.Add(CellView.MakeNumeric(i + 1)); // B
                 row.Cells.Add(CellView.MakeBool(i % 2 != 0)); // C
-                row.Cells.Add(CellView.MakeNumeric(1.0 / (i + 1)).Selected(i == 8)); // D
+                row.Cells.Add(
+                    CellView.MakeNumeric(1.0 / (i + 1))
+                        .Selected(i == 8)); // D
                 row.Cells.Add(CellView.MakeEmpty()); // E
                 row.Cells.Add(CellView.MakeError(i % 2 != 0 ? "#REF!" : "#N/A")); // F
                 row.Cells.Add(CellView.MakeText($"text { i + 1}")); // G
