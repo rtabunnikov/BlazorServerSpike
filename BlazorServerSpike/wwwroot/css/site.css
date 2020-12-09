@@ -42,9 +42,64 @@ a, .btn-link {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+.cell-table, .cell-table tr, .cell-table td {
+    font-family: Calibri;
+}
+
+.column-headers, .column-header, .row-header {
+    font-family: Calibri;
+    border-color: #999;
+    text-align: center;
+    color: #444;
+    background-color: #e6e6e6;
+    font-size: 1em;
+}
+
+.column-headers {
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
+    line-height: 20px;
+}
+
+.column-header {
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    cursor: url("./col-cursor.png"), pointer;
+}
+
+.row-header {
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    cursor: url("./row-cursor.png"), pointer;
+}
+
+.column-header:hover, .row-header:hover {
+    background-color: #9fd5b7;
+}
+
+.cell {
+    border: 1px solid #d4d4d4;
+    overflow: hidden;
+    cursor: cell;
+}
+
+.cell-ctr {
+    text-align: center;
+}
+
+.cell-left {
+    text-align: left;
+}
+
+.cell-right {
+    text-align: right;
+}

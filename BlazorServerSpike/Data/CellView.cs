@@ -50,11 +50,18 @@ namespace BlazorServerSpike.Data {
         public static CellView MakeEmpty() => empty;
 
         public string GetDisplayText() => ValueType switch {
-            CellValueType.Number => NumericValue.ToString("G15"),
+            CellValueType.Number => NumericValue.ToString("G3"),
             CellValueType.Text => TextValue ?? string.Empty,
             CellValueType.Bool => NumericValue != 0 ? "TRUE" : "FALSE",
             CellValueType.Error => TextValue ?? string.Empty,
             _ => string.Empty
+        };
+
+        public string GetClassList() => ValueType switch {
+            CellValueType.Number => "cell cell-right",
+            CellValueType.Bool => "cell cell-ctr",
+            CellValueType.Error => "cell cell-ctr",
+            _ => "cell cell-left"
         };
     }
 }

@@ -12,6 +12,12 @@
 }
 else {
     <table class="cell-table">
+        <colgroup>
+            <col style="width: 26px" />
+            @foreach (var column in sheetView.Columns) {
+                <col style="@column.GetInlineStyle()" />
+            }
+        </colgroup>
         <tbody>
             <tr class="column-headers">
                 <td>&nbsp;</td>
@@ -20,10 +26,10 @@ else {
                 }
             </tr>
             @foreach (var row in sheetView.Rows) {
-                <tr>
+                <tr style="@row.GetInlineStyle()">
                     <td class="row-header">@row.Header</td>
                     @foreach(var cell in row.Cells) {
-                        <td>@cell.GetDisplayText()</td>
+                        <td class="@cell.GetClassList()">@cell.GetDisplayText()</td>
                     }
                 </tr>
             }

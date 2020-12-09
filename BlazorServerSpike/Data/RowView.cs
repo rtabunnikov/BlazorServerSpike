@@ -8,5 +8,7 @@ namespace BlazorServerSpike.Data {
         public string Header { get; set; }
         public int Height { get; set; }
         public List<CellView> Cells { get; } = new List<CellView>();
+
+        public string GetInlineStyle() => $"line-height: {Height}px";
     }
 }
