@@ -1,0 +1,40 @@
+﻿@page "/worksheetview"
+
+@using BlazorServerSpike.Data
+@inject WorksheetViewService WorksheetViewService
+
+<h1>Worksheet view</h1>
+
+<p>This component render worksheet view data fetched from a service.</p>
+
+@if (sheetView == null) {
+    <p><em>Loading...</em></p>
+}
+else {
+    <table class="cell-table">
+        <tbody>
+            <tr class="column-headers">
+                <td>&nbsp;</td>
+                @foreach(var column in sheetView.Columns) {
+                    <td class="column-header">@column.Header</td>
+                }
+            </tr>
+            @foreach (var row in sheetView.Rows) {
+                <tr>
+                    <td class="row-header">@row.Header</td>
+                    @foreach(var cell in row.Cells) {
+                        <td>@cell.GetDisplayText()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WorksheetView sheetView;
+
+    protected override async Task OnInitializedAsync() {
+        sheetView = await WorksheetViewService.GetWorksheetViewAsync();
+    }
+}
