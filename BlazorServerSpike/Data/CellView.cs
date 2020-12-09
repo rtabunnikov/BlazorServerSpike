@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BlazorServerSpike.Data {
@@ -22,6 +23,7 @@ namespace BlazorServerSpike.Data {
         public CellValueType ValueType { get; set; }
         public double NumericValue { get; set; }
         public string TextValue { get; set; }
+        public bool IsSelected { get; set; }
 
         public static CellView MakeText(string value) => new CellView() {
             ValueType = CellValueType.Text,
@@ -57,11 +59,23 @@ namespace BlazorServerSpike.Data {
             _ => string.Empty
         };
 
-        public string GetClassList() => ValueType switch {
-            CellValueType.Number => "cell cell-right",
-            CellValueType.Bool => "cell cell-ctr",
-            CellValueType.Error => "cell cell-ctr",
-            _ => "cell cell-left"
-        };
+        public string GetClassList() {
+            var sb = new StringBuilder();
+            sb.Append("cell");
+            sb.Append(ValueType switch {
+                CellValueType.Number => " cell-right",
+                CellValueType.Bool => " cell-ctr",
+                CellValueType.Error => " cell-ctr",
+                _ => " cell-left"
+            });
+            if (IsSelected)
+                sb.Append(" cell-selected");
+            return sb.ToString();
+        }
+
+        public CellView Selected(bool value) {
+            IsSelected = value;
+            return this;
+        }
     }
 }

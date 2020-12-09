@@ -22,12 +22,12 @@ else {
             <tr class="column-headers">
                 <td>&nbsp;</td>
                 @foreach(var column in sheetView.Columns) {
-                    <td class="column-header">@column.Header</td>
+                    <td class="@column.GetClassList()">@column.Header</td>
                 }
             </tr>
             @foreach (var row in sheetView.Rows) {
                 <tr style="@row.GetInlineStyle()">
-                    <td class="row-header">@row.Header</td>
+                    <td class="@row.GetClassList()">@row.Header</td>
                     @foreach(var cell in row.Cells) {
                         <td class="@cell.GetClassList()">@cell.GetDisplayText()</td>
                     }

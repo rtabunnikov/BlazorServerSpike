@@ -75,11 +75,21 @@ a, .btn-link {
     cursor: url("./col-cursor.png"), pointer;
 }
 
+.column-header-selected {
+    border-bottom: 2px solid #217346;
+    background-color: #d2d2d2;
+}
+
 .row-header {
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
     border-right: 1px solid #999;
     cursor: url("./row-cursor.png"), pointer;
+}
+
+.row-header-selected {
+    border-right: 2px solid #217346;
+    background-color: #d2d2d2;
 }
 
 .column-header:hover, .row-header:hover {
@@ -102,4 +112,8 @@ a, .btn-link {
 
 .cell-right {
     text-align: right;
+}
+
+.cell-selected {
+    border: 2px solid #217346;
 }
